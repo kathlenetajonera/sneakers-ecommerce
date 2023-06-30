@@ -19,11 +19,16 @@ export const NavContainer = styled(FlexWrapper)`
         margin-right: 45px;
         cursor: pointer;
 
-        &:hover {
+        &:hover,
+        &.active {
             svg path {
                 fill: ${GLOBAL_COLORS.black};
             }
         }
+    }
+
+    .relative {
+        position: relative;
     }
 `;
 
