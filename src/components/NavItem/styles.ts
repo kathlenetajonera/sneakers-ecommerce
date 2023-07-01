@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { GLOBAL_COLORS } from "../../utils/variables";
 
 export const LinkWrapper = styled.div`
     position: relative;
@@ -14,7 +13,7 @@ export const LinkWrapper = styled.div`
         display: block;
         width: 100%;
         height: 4px;
-        background-color: ${GLOBAL_COLORS.orange};
+        background-color: ${(props) => props.theme.colors.orange};
 
         position: absolute;
         left: 0;
@@ -25,7 +24,7 @@ export const LinkWrapper = styled.div`
 
     &:hover {
         a {
-            color: ${GLOBAL_COLORS.black};
+            color: ${(props) => props.theme.colors.black};
         }
 
         &::after {
@@ -38,7 +37,7 @@ export const StyledLink = styled.a`
     display: flex;
     align-items: center;
     height: 100%;
-    color: ${GLOBAL_COLORS.darkGrayishBlue};
+    color: ${(props) => props.theme.colors.darkGrayishBlue};
     text-decoration: none;
     transition: color 0.3s ease;
 `;

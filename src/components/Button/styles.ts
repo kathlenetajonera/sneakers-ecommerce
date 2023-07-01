@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
-import { GLOBAL_COLORS } from "../../utils/variables";
 
 export const StyledButton = styled.button`
-    background-color: ${GLOBAL_COLORS.orange};
-    color: ${GLOBAL_COLORS.white};
+    background-color: ${(props) => props.theme.colors.orange};
+    color: ${(props) => props.theme.colors.white};
     width: 100%;
     border: none;
     outline: none;

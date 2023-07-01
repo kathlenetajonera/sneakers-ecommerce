@@ -1,10 +1,9 @@
 import { styled } from "styled-components";
 import FlexWrapper from "../../layout/FlexWrapper";
-import { GLOBAL_COLORS } from "../../utils/variables";
 
 export const NavContainer = styled(FlexWrapper)`
     height: 120px;
-    border-bottom: 2px solid ${GLOBAL_COLORS.lightGrayishBlue};
+    border-bottom: 2px solid ${(props) => props.theme.colors.lightGrayishBlue};
 
     .flex-wrapper,
     .menu {
@@ -22,7 +21,7 @@ export const NavContainer = styled(FlexWrapper)`
         &:hover,
         &.active {
             svg path {
-                fill: ${GLOBAL_COLORS.black};
+                fill: ${(props) => props.theme.colors.black};
             }
         }
     }
@@ -41,7 +40,7 @@ export const AvatarWrapper = styled.span`
     cursor: pointer;
 
     &:hover {
-        border-color: ${GLOBAL_COLORS.orange};
+        border-color: ${(props) => props.theme.colors.orange};
     }
 
     img {

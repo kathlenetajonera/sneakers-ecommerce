@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { GLOBAL_COLORS } from "../../utils/variables";
 
 export const Container = styled.div<{ $active: boolean }>`
     position: absolute;
@@ -8,7 +7,7 @@ export const Container = styled.div<{ $active: boolean }>`
     width: 360px;
     box-shadow: 0px 6px 16px 0px rgba(182, 188, 200, 0.4);
     border-radius: 12px;
-    background-color: ${GLOBAL_COLORS.white};
+    background-color: ${(props) => props.theme.colors.white};
     transition: 0.3s ease;
 
     ${(props) =>
@@ -27,7 +26,7 @@ export const CartTitle = styled.p`
     font-weight: 700;
     margin: 0;
     padding: 24px;
-    border-bottom: 2px solid ${GLOBAL_COLORS.lightGrayishBlue};
+    border-bottom: 2px solid ${(props) => props.theme.colors.lightGrayishBlue};
 `;
 
 export const CartContent = styled.div`
@@ -44,7 +43,7 @@ export const CartEmpty = styled.p`
     align-items: center;
     min-height: 140px;
     font-weight: 700;
-    color: ${GLOBAL_COLORS.darkGrayishBlue};
+    color: ${(props) => props.theme.colors.darkGrayishBlue};
     margin: -24px 0 0;
 `;
 
@@ -63,14 +62,14 @@ export const ItemDetails = styled.div`
 `;
 
 export const ItemText = styled.p`
-    color: ${GLOBAL_COLORS.darkGrayishBlue};
+    color: ${(props) => props.theme.colors.darkGrayishBlue};
 
     &:first-child {
         margin-bottom: 8px;
     }
 
     .total {
-        color: ${GLOBAL_COLORS.black};
+        color: ${(props) => props.theme.colors.black};
         font-weight: 700;
     }
 `;
@@ -80,7 +79,7 @@ export const ItemDelete = styled.div`
 
     &:hover {
         svg path {
-            fill: ${GLOBAL_COLORS.darkGrayishBlue};
+            fill: ${(props) => props.theme.colors.darkGrayishBlue};
         }
     }
 `;
