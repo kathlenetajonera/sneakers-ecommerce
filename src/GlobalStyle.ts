@@ -11,4 +11,12 @@ export default createGlobalStyle<{}>`
         box-sizing: border-box;
         font-family: 'Kumbh Sans', sans-serif;
     }
+
+    p {
+        margin: 0;
+    }
+
+    p, a, button {
+        font-family: 'Kumbh Sans', sans-serif;
+    }
 `;

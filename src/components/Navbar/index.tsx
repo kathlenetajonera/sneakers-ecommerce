@@ -23,10 +23,13 @@ const Navbar = () => {
                 </FlexWrapper>
             </FlexWrapper>
 
-            <FlexWrapper className="flex-wrapper relative">
+            <FlexWrapper
+                className="flex-wrapper relative"
+                onMouseLeave={() => setShowCart(false)}
+            >
                 <CartIcon
                     className={`cart ${showCart ? "active" : ""}`}
-                    onClick={() => setShowCart(!showCart)}
+                    onMouseEnter={() => setShowCart(true)}
                 />
                 <Cart show={showCart} />
 
