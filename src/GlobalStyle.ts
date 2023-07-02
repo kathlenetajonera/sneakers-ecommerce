@@ -20,4 +20,9 @@ export default createGlobalStyle<{}>`
         font-family: 'Kumbh Sans', sans-serif;
         color: ${(props) => props.theme.colors.black}
     }
+
+    img {
+        max-width: 100%;
+        object-fit: cover;
+    }
 `;

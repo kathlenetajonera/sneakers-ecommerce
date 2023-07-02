@@ -8,7 +8,7 @@ const QuantityField = () => {
             <IconWrapper>
                 <img src={minusIcon} alt="subtract" />
             </IconWrapper>
-            <StyledInput type="text" value="0" />
+            <StyledInput type="text" defaultValue="0" />
             <IconWrapper>
                 <img src={plusIcon} alt="add" />
             </IconWrapper>

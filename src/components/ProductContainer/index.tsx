@@ -1,6 +1,7 @@
 import FlexWrapper from "../../layout/FlexWrapper";
 import Button from "../Button";
 import CartIcon from "../CartIcon";
+import ImageGallery from "../ImageGallery";
 import QuantityField from "../QuantityField";
 import {
     Container,
@@ -17,7 +18,9 @@ const ProductContainer = () => {
     return (
         <Container>
             <FlexWrapper>
-                <Wrapper>image</Wrapper>
+                <Wrapper>
+                    <ImageGallery />
+                </Wrapper>
 
                 <Wrapper>
                     <Company>SNEAKER COMPANY</Company>

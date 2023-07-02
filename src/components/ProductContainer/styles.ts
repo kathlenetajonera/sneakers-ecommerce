@@ -20,6 +20,10 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
     flex: 1;
+
+    &:last-child {
+        margin-left: 120px;
+    }
 `;
 
 export const Company = styled.p`

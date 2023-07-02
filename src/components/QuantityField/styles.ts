@@ -30,5 +30,6 @@ export const StyledInput = styled.input`
     height: 100%;
     text-align: center;
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 700;
+    flex: 1;
 `;
