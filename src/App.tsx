@@ -1,8 +1,9 @@
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme";
 import Container from "./layout/Container";
-import Navbar from "./components/Navbar";
 import GlobalStyle from "./GlobalStyle";
+import Navbar from "./components/Navbar";
+import ProductContainer from "./components/ProductContainer";
 
 function App() {
     return (
@@ -10,6 +11,8 @@ function App() {
             <Container>
                 <GlobalStyle />
                 <Navbar />
+
+                <ProductContainer />
             </Container>
         </ThemeProvider>
     );

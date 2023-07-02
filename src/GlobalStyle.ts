@@ -12,11 +12,12 @@ export default createGlobalStyle<{}>`
         font-family: 'Kumbh Sans', sans-serif;
     }
 
-    p {
+    h1, h2, h3, p {
         margin: 0;
     }
 
     p, a, button {
         font-family: 'Kumbh Sans', sans-serif;
+        color: ${(props) => props.theme.colors.black}
     }
 `;
