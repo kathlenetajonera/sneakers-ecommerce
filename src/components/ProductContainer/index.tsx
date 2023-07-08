@@ -49,7 +49,7 @@ const ProductContainer = ({ cartItems, setCartItems }: Props) => {
         setTimeout(() => {
             setCartItems(updatedItems);
             setIsLoading(false);
-        }, 2000);
+        }, 1500);
     };
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const ProductContainer = ({ cartItems, setCartItems }: Props) => {
 
     return (
         <Container>
-            <FlexWrapper>
+            <FlexWrapper className="product-wrapper">
                 <Wrapper>
                     <ImageGallery />
                 </Wrapper>
@@ -73,13 +73,15 @@ const ProductContainer = ({ cartItems, setCartItems }: Props) => {
                         {product.description}
                     </ProductDescription>
 
-                    <Price>
-                        {formatAmount(product.discounted_price)}
-                        <Discount>{product.discount_percent}%</Discount>
-                    </Price>
-                    <OriginalPrice>
-                        {formatAmount(product.original_price)}
-                    </OriginalPrice>
+                    <div className="price-wrapper">
+                        <Price>
+                            {formatAmount(product.discounted_price)}
+                            <Discount>{product.discount_percent}%</Discount>
+                        </Price>
+                        <OriginalPrice>
+                            {formatAmount(product.original_price)}
+                        </OriginalPrice>
+                    </div>
 
                     <FlexWrapper className="buttons">
                         <QuantityField

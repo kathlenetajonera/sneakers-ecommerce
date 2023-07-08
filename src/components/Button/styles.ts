@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { device } from "../../utils/device";
 
 export const StyledButton = styled.button`
     display: flex;
@@ -7,6 +8,7 @@ export const StyledButton = styled.button`
     background-color: ${(props) => props.theme.colors.orange};
     color: ${(props) => props.theme.colors.white};
     width: 100%;
+    max-width: 320px;
     border: none;
     outline: none;
     padding: 20px;
@@ -18,6 +20,11 @@ export const StyledButton = styled.button`
 
     &:hover {
         opacity: 0.6;
+    }
+
+    @media ${device.mobile} {
+        width: 100%;
+        max-width: 100%;
     }
 `;
 

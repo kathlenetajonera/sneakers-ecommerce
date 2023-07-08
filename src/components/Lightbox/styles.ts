@@ -22,6 +22,10 @@ export const Container = styled.div`
 
     .thumbnails {
         margin: 0 60px;
+
+        @media screen and (max-height: 768px) {
+            margin: 0;
+        }
     }
 `;
 
@@ -29,6 +33,14 @@ export const Wrapper = styled.div`
     max-width: 590px;
     margin: 0 auto;
     z-index: 2;
+
+    @media screen and (max-height: 768px) {
+        max-width: 480px;
+    }
+
+    @media screen and (max-height: 700px) {
+        max-width: 400px;
+    }
 `;
 
 export const CloseButton = styled.span`

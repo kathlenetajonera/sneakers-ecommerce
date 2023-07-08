@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { device } from "../../utils/device";
 
 export const Container = styled.div`
     display: flex;
@@ -8,6 +9,11 @@ export const Container = styled.div`
     height: 64px;
     border-radius: 8px;
     max-width: 160px;
+
+    @media ${device.mobile} {
+        width: 100%;
+        max-width: 100%;
+    }
 `;
 
 export const IconWrapper = styled.span`

@@ -20,6 +20,10 @@ export const Container = styled.div<{ $active: boolean }>`
                 transform: translateY(105%);
                 opacity: 0;
             `}
+
+    @media screen and (max-width: 1366px) {
+        right: 0;
+    }
 `;
 
 export const CartTitle = styled.p`

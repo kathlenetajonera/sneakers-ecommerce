@@ -15,7 +15,7 @@ const ImageGallery = () => {
                     <img src={images[activeImage].original} />
                 </ActiveImage>
 
-                <FlexWrapper>
+                <FlexWrapper className="thumbnails">
                     {images.map((img) => (
                         <Thumbnail
                             key={img.key}

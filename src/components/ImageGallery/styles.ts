@@ -1,13 +1,39 @@
 import { styled } from "styled-components";
+import { device } from "../../utils/device";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+    @media ${device.tablet} {
+        .thumbnails {
+            display: none;
+        }
+    }
+`;
 
 export const ActiveImage = styled.div`
     margin-bottom: 30px;
     cursor: pointer;
 
+    @media ${device.tablet} {
+        position: relative;
+        width: 100vw;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 480px;
+    }
+
+    @media ${device.mobile} {
+        height: 330px;
+    }
+
     img {
         border-radius: 16px;
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+
+        @media ${device.tablet} {
+            border-radius: 0;
+        }
     }
 `;
 
