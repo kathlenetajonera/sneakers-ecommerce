@@ -1,3 +1,9 @@
+import { Dispatch, SetStateAction } from "react";
+import { CartItems } from "../../App";
+import { formatAmount } from "../../utils";
+import DeleteIcon from "../DeleteIcon";
+import FlexWrapper from "../../layout/FlexWrapper";
+import Button from "../Button";
 import {
     CartContent,
     CartEmpty,
@@ -8,44 +14,60 @@ import {
     ItemText,
     ItemThumbnail,
 } from "./styles";
-import image from "../../assets/image-product-1-thumbnail.jpg";
-import DeleteIcon from "../DeleteIcon";
-import FlexWrapper from "../../layout/FlexWrapper";
-import Button from "../Button";
 
 type Props = {
     show: boolean;
+    items: CartItems;
+    setItems: Dispatch<SetStateAction<CartItems>>;
 };
 
-const Cart = ({ show }: Props) => {
-    const cartItems = [];
+const Cart = ({ show, items, setItems }: Props) => {
+    const calculateTotal = (amount: number, qty: number) =>
+        formatAmount(amount * qty);
+
+    const handleDelete = (id: number) => {
+        setItems((prev) => [...prev.filter((item) => item.id !== id)]);
+    };
 
     return (
         <Container $active={show}>
             <CartTitle>Cart</CartTitle>
             <CartContent>
-                {cartItems.length > 0 ? (
+                {items.length > 0 ? (
                     <>
                         <div>
-                            <FlexWrapper className="item">
-                                <ItemThumbnail>
-                                    <img src={image} alt="product" />
-                                </ItemThumbnail>
+                            {items.map((item) => (
+                                <FlexWrapper className="item" key={item.id}>
+                                    <ItemThumbnail>
+                                        <img
+                                            src={item.images[0].thumbnail}
+                                            alt={item.name}
+                                        />
+                                    </ItemThumbnail>
 
-                                <ItemDetails>
-                                    <ItemText>
-                                        Fall Limited Edition Sneakers
-                                    </ItemText>
-                                    <ItemText>
-                                        $125.00 x 3{" "}
-                                        <span className="total">$375.00</span>
-                                    </ItemText>
-                                </ItemDetails>
+                                    <ItemDetails>
+                                        <ItemText>{item.name}</ItemText>
+                                        <ItemText>
+                                            {formatAmount(
+                                                item.discounted_price
+                                            )}{" "}
+                                            x {item.quantity}{" "}
+                                            <span className="total">
+                                                {calculateTotal(
+                                                    item.discounted_price,
+                                                    item.quantity
+                                                )}
+                                            </span>
+                                        </ItemText>
+                                    </ItemDetails>
 
-                                <ItemDelete>
-                                    <DeleteIcon />
-                                </ItemDelete>
-                            </FlexWrapper>
+                                    <ItemDelete
+                                        onClick={() => handleDelete(item.id)}
+                                    >
+                                        <DeleteIcon />
+                                    </ItemDelete>
+                                </FlexWrapper>
+                            ))}
                         </div>
 
                         <Button label="Checkout" />

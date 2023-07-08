@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { CartItems } from "../../App";
 import FlexWrapper from "../../layout/FlexWrapper";
 import Logo from "../Logo";
 import NavItem from "../NavItem";
@@ -8,7 +9,12 @@ import { AvatarWrapper, NavContainer } from "./styles";
 import avatar from "../../assets/image-avatar.png";
 import menu from "./data";
 
-const Navbar = () => {
+type Props = {
+    cartItems: CartItems;
+    setCartItems: Dispatch<SetStateAction<CartItems>>;
+};
+
+const Navbar = ({ cartItems, setCartItems }: Props) => {
     const [showCart, setShowCart] = useState(false);
 
     return (
@@ -31,7 +37,11 @@ const Navbar = () => {
                     className={`cart ${showCart ? "active" : ""}`}
                     onMouseEnter={() => setShowCart(true)}
                 />
-                <Cart show={showCart} />
+                <Cart
+                    show={showCart}
+                    items={cartItems}
+                    setItems={setCartItems}
+                />
 
                 <AvatarWrapper>
                     <img src={avatar} alt="profile" />

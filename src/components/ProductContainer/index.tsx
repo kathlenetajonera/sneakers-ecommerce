@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { CartItems } from "../../App";
+import { formatAmount } from "../../utils";
 import FlexWrapper from "../../layout/FlexWrapper";
 import Button from "../Button";
 import CartIcon from "../CartIcon";
@@ -13,8 +16,43 @@ import {
     OriginalPrice,
     Price,
 } from "./styles";
+import { DATA } from "./data";
 
-const ProductContainer = () => {
+type Props = {
+    cartItems: CartItems;
+    setCartItems: Dispatch<SetStateAction<CartItems>>;
+};
+
+const ProductContainer = ({ cartItems, setCartItems }: Props) => {
+    const [product, setProduct] = useState(DATA);
+    const [productQuantity, setProductQuantity] = useState(1);
+
+    const handleAddToCart = () => {
+        const existingIds = cartItems.map((item) => item.id);
+        let updatedItems;
+
+        if (existingIds.includes(product.id)) {
+            updatedItems = cartItems.map((item) => {
+                if (item.id === product.id) {
+                    return { ...item, quantity: productQuantity };
+                }
+
+                return item;
+            });
+        } else {
+            updatedItems = [...cartItems, product];
+        }
+
+        setCartItems(updatedItems);
+    };
+
+    useEffect(() => {
+        setProduct((prod) => ({
+            ...prod,
+            quantity: productQuantity,
+        }));
+    }, [productQuantity]);
+
     return (
         <Container>
             <FlexWrapper>
@@ -23,26 +61,31 @@ const ProductContainer = () => {
                 </Wrapper>
 
                 <Wrapper>
-                    <Company>SNEAKER COMPANY</Company>
-                    <ProductName>Fall Limited Edition Sneakers</ProductName>
+                    <Company>{product.company}</Company>
+                    <ProductName>{product.name}</ProductName>
                     <ProductDescription>
-                        These low-profile sneakers are your perfect casual wear
-                        companion. Featuring a durable rubber outer sole,
-                        they'll withstand everything the weather can offer.
+                        {product.description}
                     </ProductDescription>
 
                     <Price>
-                        $125.00 <Discount>50%</Discount>
+                        {formatAmount(product.discounted_price)}
+                        <Discount>{product.discount_percent}%</Discount>
                     </Price>
-                    <OriginalPrice>$250.00</OriginalPrice>
+                    <OriginalPrice>
+                        {formatAmount(product.original_price)}
+                    </OriginalPrice>
 
                     <FlexWrapper className="buttons">
-                        <QuantityField />
+                        <QuantityField
+                            quantity={productQuantity}
+                            setQuantity={setProductQuantity}
+                        />
 
                         <Button
                             label="Add to cart"
                             icon={<CartIcon />}
                             className="add-to-cart"
+                            handleClick={handleAddToCart}
                         />
                     </FlexWrapper>
                 </Wrapper>

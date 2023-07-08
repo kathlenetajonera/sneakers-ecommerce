@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme";
 import Container from "./layout/Container";
@@ -6,16 +7,39 @@ import Navbar from "./components/Navbar";
 import ProductContainer from "./components/ProductContainer";
 
 function App() {
+    const [cartItems, setCartItems] = useState<CartItems>([]);
+
     return (
         <ThemeProvider theme={theme}>
             <Container>
                 <GlobalStyle />
-                <Navbar />
+                <Navbar cartItems={cartItems} setCartItems={setCartItems} />
 
-                <ProductContainer />
+                <ProductContainer
+                    cartItems={cartItems}
+                    setCartItems={setCartItems}
+                />
             </Container>
         </ThemeProvider>
     );
 }
+
+export type Item = {
+    id: number;
+    name: string;
+    description: string;
+    company: string;
+    original_price: number;
+    discounted_price: number;
+    discount_percent: number;
+    quantity: number;
+    images: {
+        key: number;
+        thumbnail: string;
+        original: string;
+    }[];
+};
+
+export type CartItems = Item[];
 
 export default App;

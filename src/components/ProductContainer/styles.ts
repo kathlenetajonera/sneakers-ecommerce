@@ -31,6 +31,7 @@ export const Company = styled.p`
     font-size: 14px;
     color: ${(props) => props.theme.colors.orange};
     margin-bottom: 20px;
+    text-transform: uppercase;
 `;
 
 export const ProductName = styled.h1`
