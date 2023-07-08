@@ -26,10 +26,13 @@ type Props = {
 const ProductContainer = ({ cartItems, setCartItems }: Props) => {
     const [product, setProduct] = useState(DATA);
     const [productQuantity, setProductQuantity] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleAddToCart = () => {
+        setIsLoading(true);
+
         const existingIds = cartItems.map((item) => item.id);
-        let updatedItems;
+        let updatedItems: CartItems = [];
 
         if (existingIds.includes(product.id)) {
             updatedItems = cartItems.map((item) => {
@@ -43,7 +46,10 @@ const ProductContainer = ({ cartItems, setCartItems }: Props) => {
             updatedItems = [...cartItems, product];
         }
 
-        setCartItems(updatedItems);
+        setTimeout(() => {
+            setCartItems(updatedItems);
+            setIsLoading(false);
+        }, 2000);
     };
 
     useEffect(() => {
@@ -86,6 +92,7 @@ const ProductContainer = ({ cartItems, setCartItems }: Props) => {
                             icon={<CartIcon />}
                             className="add-to-cart"
                             handleClick={handleAddToCart}
+                            isLoading={isLoading}
                         />
                     </FlexWrapper>
                 </Wrapper>
