@@ -57,7 +57,7 @@ export const MenuWrapper = styled.div`
         max-width: 400px;
         height: 100%;
         background-color: ${(props) => props.theme.colors.white};
-        z-index: 2;
+        z-index: 5;
         transition: transform 0.3s ease-out;
 
         &.mobile-active {
@@ -81,7 +81,7 @@ export const Overlay = styled.div`
         width: 100%;
         background: rgba(0, 0, 0, 0.6);
         height: 100%;
-        z-index: 1;
+        z-index: 2;
         opacity: 0;
         transition: opacity 0.3s ease;
         pointer-events: none;

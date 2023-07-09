@@ -7,7 +7,7 @@ export const NavIcon = styled.div`
     @media ${device.tablet} {
         display: block;
         margin-right: 16px;
-        z-index: 3;
+        z-index: 6;
 
         &.active {
             span {

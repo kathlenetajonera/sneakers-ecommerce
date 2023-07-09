@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { device } from "../../utils/device";
 
 export const Container = styled.div<{ $active: boolean }>`
     position: absolute;
@@ -9,20 +10,42 @@ export const Container = styled.div<{ $active: boolean }>`
     border-radius: 12px;
     background-color: ${(props) => props.theme.colors.white};
     transition: 0.3s ease;
+    z-index: 5;
+    pointer-events: none;
 
     ${(props) =>
         props.$active
             ? `
                 transform: translateY(100%);
                 opacity: 1;
+                pointer-events: all;
             `
             : `
                 transform: translateY(105%);
                 opacity: 0;
+                pointer-events: none;
             `}
 
     @media screen and (max-width: 1366px) {
         right: 0;
+    }
+
+    @media ${device.tablet} {
+        right: -25px;
+        bottom: -12px;
+
+        ${(props) =>
+            props.$active
+                ? `
+                transform: scaleX(0.95) translateY(100%);
+            `
+                : `
+                transform: scaleX(0.95) translateY(105%);
+            `}
+    }
+
+    @media ${device.mobile} {
+        width: 100vw;
     }
 `;
 

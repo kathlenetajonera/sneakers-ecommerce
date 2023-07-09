@@ -2,6 +2,8 @@ import { styled } from "styled-components";
 import { device } from "../../utils/device";
 
 export const Container = styled.div`
+    position: relative;
+
     @media ${device.tablet} {
         .thumbnails {
             display: none;
@@ -22,7 +24,7 @@ export const ActiveImage = styled.div`
     }
 
     @media ${device.mobile} {
-        height: 330px;
+        height: 300px;
     }
 
     img {
@@ -82,5 +84,37 @@ export const Thumbnail = styled.span`
     img {
         border-radius: 10px;
         transition: opacity 0.3s ease;
+    }
+`;
+
+export const Arrow = styled.span<{ $position: string }>`
+    display: none;
+
+    @media ${device.tablet} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: ${(props) => props.theme.colors.white};
+        cursor: pointer;
+        z-index: 1;
+
+        position: absolute;
+        top: 50%;
+        left: ${(props) => (props.$position === "prev" ? "16px" : "unset")};
+        right: ${(props) => (props.$position === "next" ? "16px" : "unset")};
+        transform: translateY(-50%);
+
+        svg {
+            transform: scale(0.7);
+        }
+
+        &:hover {
+            svg path {
+                stroke: ${(props) => props.theme.colors.orange};
+            }
+        }
     }
 `;

@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { device } from "../../utils/device";
 
 export const Container = styled.div`
     position: fixed;
@@ -9,7 +10,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 10;
 
     opacity: 0;
     pointer-events: none;
@@ -26,6 +27,10 @@ export const Container = styled.div`
         @media screen and (max-height: 768px) {
             margin: 0;
         }
+
+        @media ${device.desktopXs} {
+            margin: 0;
+        }
     }
 `;
 
@@ -40,6 +45,10 @@ export const Wrapper = styled.div`
 
     @media screen and (max-height: 700px) {
         max-width: 400px;
+    }
+
+    @media ${device.mobile} {
+        max-width: 80%;
     }
 `;
 
@@ -97,6 +106,15 @@ export const Arrow = styled.span<{ $position: string }>`
         -50%
     );
 
+    @media ${device.mobile} {
+        width: 35px;
+        height: 35px;
+
+        svg {
+            transform: scale(0.7);
+        }
+    }
+
     &:hover {
         svg path {
             stroke: ${(props) => props.theme.colors.orange};
@@ -128,6 +146,10 @@ export const Thumbnail = styled.span`
 
     &:not(:last-child) {
         margin-right: 30px;
+
+        @media ${device.mobile} {
+            margin-right: 16px;
+        }
     }
 
     &.active {
