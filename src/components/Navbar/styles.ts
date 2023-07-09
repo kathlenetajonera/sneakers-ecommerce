@@ -21,10 +21,6 @@ export const NavContainer = styled(FlexWrapper)`
 
     .menu {
         margin-left: 60px;
-
-        @media ${device.tablet} {
-            display: none;
-        }
     }
 
     .cart {
@@ -46,6 +42,54 @@ export const NavContainer = styled(FlexWrapper)`
 
     .relative {
         position: relative;
+    }
+`;
+
+export const MenuWrapper = styled.div`
+    height: 100%;
+
+    @media ${device.tablet} {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        width: 65%;
+        max-width: 400px;
+        height: 100%;
+        background-color: ${(props) => props.theme.colors.white};
+        z-index: 2;
+        transition: transform 0.3s ease-out;
+
+        &.mobile-active {
+            transform: translateX(0);
+        }
+
+        .menu {
+            flex-direction: column;
+            align-items: flex-start;
+            height: auto;
+            margin: 100px 0 0 25px;
+        }
+    }
+`;
+
+export const Overlay = styled.div`
+    @media ${device.tablet} {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+
+        &.mobile-active {
+            pointer-events: all;
+            opacity: 1;
+        }
     }
 `;
 

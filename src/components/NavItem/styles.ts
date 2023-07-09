@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { device } from "../../utils/device";
 
 export const LinkWrapper = styled.div`
     position: relative;
@@ -7,6 +8,10 @@ export const LinkWrapper = styled.div`
     margin-right: 35px;
     height: 100%;
     overflow: hidden;
+
+    @media ${device.tablet} {
+        margin-bottom: 24px;
+    }
 
     &::after {
         content: "";
@@ -40,4 +45,11 @@ export const StyledLink = styled.a`
     color: ${(props) => props.theme.colors.darkGrayishBlue};
     text-decoration: none;
     transition: color 0.3s ease;
+
+    @media ${device.tablet} {
+        font-size: 20px;
+        font-weight: 700;
+        color: ${(props) => props.theme.colors.black};
+        margin-bottom: 5px;
+    }
 `;

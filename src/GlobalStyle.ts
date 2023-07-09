@@ -10,6 +10,7 @@ export default createGlobalStyle<{}>`
         padding: 0;
         box-sizing: border-box;
         font-family: 'Kumbh Sans', sans-serif;
+        overflow-x: hidden;
     }
 
     h1, h2, h3, p {
